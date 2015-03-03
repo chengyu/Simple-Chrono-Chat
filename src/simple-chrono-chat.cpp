@@ -70,7 +70,7 @@ private:
   Name m_routingPrefix;  // routable prefix
   Name m_routableUserChatPrefix;
 
-  unique_ptr<ndn::Face> m_face;
+  shared_ptr<ndn::Face> m_face;
   shared_ptr<chronosync::Socket> m_socket; // SyncSocket
 };
 
@@ -90,7 +90,7 @@ Chat::~Chat()
 void
 Chat::initialize()
 {
-  m_face = unique_ptr<ndn::Face>(new ndn::Face);
+  m_face = make_shared<ndn::Face>();
 
   // The routable user prefix is the user's name prefix
   m_routableUserChatPrefix.clear();
