@@ -16,6 +16,16 @@ def options(opt):
 def configure(conf):
     conf.load(['compiler_cxx', 'default-compiler-flags', 'boost', 'gnu_dirs'])
 
+    conf.find_program('bash', var='BASH')
+
+    if not os.environ.has_key('PKG_CONFIG_PATH'):
+        os.environ['PKG_CONFIG_PATH'] = ':'.join([
+            '/usr/local/lib/pkgconfig',
+            '/usr/local/lib32/pkgconfig',
+            '/usr/local/lib64/pkgconfig',
+            '/opt/local/lib/pkgconfig'])
+
+
     conf.check_cfg(package='libndn-cxx', args=['--cflags', '--libs'],
                    uselib_store='NDN_CXX', mandatory=True)
 
