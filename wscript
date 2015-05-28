@@ -34,5 +34,5 @@ def build (bld):
         bld(features=['cxx', 'cxxprogram'],
             target="bin/%s" % name,
             source=[i] + bld.path.ant_glob(['%s/**/*.cpp' % name]),
-            use='ndn-cxx BOOST SYNC'
+            use='NDN_CXX BOOST SYNC'
         )

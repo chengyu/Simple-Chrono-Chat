@@ -129,6 +129,7 @@ Chat::displayChatData(const ndn::shared_ptr<const ndn::Data>& data)
   ndn::Name::Component speaker = data->getName().at(3);
   string message(reinterpret_cast<const char*>(data->getContent().value()),
                  data->getContent().value_size());
+
   cout << speaker.toUri() << " : " <<  message << endl;
 }
 
